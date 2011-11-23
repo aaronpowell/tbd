@@ -11,5 +11,8 @@
     "licenses": [{
         "type": "MIT",
         "url": "http://www.opensource.org/licenses/mit-license.php"
-    ]
+    }],
+    "dependencies": {
+        "jasmine-node": ">=1.0.0"
+    }
 }
