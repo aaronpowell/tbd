@@ -1,0 +1,15 @@
+{
+    "name":"tbd",
+    "description":"tbd is a test data building library, allowing you to quickly spin up large amounts of fake data to be pumped into tests",
+    "keywords": ["testing", "unit-testing", "data"],
+    "version":"0.0.1",
+    "maintainers": [{
+        "name": "Aaron Powell",
+        "email": "me@aaron-powell.com",
+        "web": "http://www.aaron-powell.com"
+    }],
+    "licenses": [{
+        "type": "MIT",
+        "url": "http://www.opensource.org/licenses/mit-license.php"
+    ]
+}
