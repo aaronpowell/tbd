@@ -20,7 +20,7 @@ describe('tbd-properties', function() {
     });
     
     it('should create properties when they don\'t exist', function() {
-        var data = tbd.from({}).prop('foo').ready().make(1);
+        var data = tbd.from({}).prop('foo').done().make(1);
         
         expect(data[0].hasOwnProperty('foo')).toBeTruthy();
     });
@@ -28,7 +28,7 @@ describe('tbd-properties', function() {
     it('should allow property values to be overriden', function() {
         var data = tbd
                     .from({ foo: 'bar' })
-                    .prop('foo').use('baz').ready()
+                    .prop('foo').use('baz').done()
                     .make(1);
                     
         expect(data[0].foo).toEqual('baz');
