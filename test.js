@@ -4,7 +4,7 @@ jasmine.executeSpecsInFolder(
     __dirname + '/tests',
     function(runner, log) { },
     true,
-    false,
+    true,
     false,
     false,
     new RegExp("spec\\.(js|coffee)$", 'i'),
