@@ -28,7 +28,7 @@ describe('tbd-properties', function() {
     it('should allow property values to be overriden', function() {
         var data = tbd
                     .from({ foo: 'bar' })
-                    .prop('foo').use('baz').build()
+                    .prop('foo').use('baz').ready()
                     .make(1);
                     
         expect(data[0].foo).toEqual('baz');
