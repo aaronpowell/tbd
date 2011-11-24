@@ -33,4 +33,12 @@ describe('tbd-properties', function() {
                     
         expect(data[0].foo).toEqual('baz');
     });
+    
+    it('should allow property values from functions', function() {
+        var data = tbd.from({ foo: 'bar' })
+                    .prop('foo').use(function() { return 'baz'; }).done()
+                    .make(1);
+                    
+        expect(data[0].foo).toEqual('baz');
+    });
 });
