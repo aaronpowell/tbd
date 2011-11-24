@@ -1,18 +1,51 @@
-# README for a newly created project.
+# tbd - Test Data Builder
 
-There are a couple of things you should do first, before you can use all of Git's power:
+Have you ever needed to push out a bunch of data for testing your app? Maybe your backend services aren't ready but you want to build the UI for the expected data?
 
-  * Add a remote to this project: in the Cloud9 IDE command line, you can execute the following commands
-    `git remote add [remote name] [remote url (eg. 'git@github.com:/ajaxorg/node_chat')]` [Enter]
-  * Create new files inside your project
-  * Add them to to Git by executing the following command
-    `git add [file1, file2, file3, ...]` [Enter]
-  * Create a commit which can be pushed to the remote you just added
-    `git commit -m 'added new files'` [Enter]
-  * Push the commit the remote
-    `git push [remote name] master` [Enter]
+Well tbd to the rescue, tbd will allow you to quickly build up some data quickly and painlessly.
 
-That's it! If this doesn't work for you, please visit the excellent resources from [Github.com](http://help.github.com) and the [Pro Git](http://http://progit.org/book/) book.
-If you can't find your answers there, feel free to ask us via Twitter (@cloud9ide), [mailing list](groups.google.com/group/cloud9-ide) or IRC (#cloud9ide on freenode).
+tbd is designed to work in both Node.js and in the browser so you can use it for any application you want.
 
-Happy coding!
+# Getting tbd
+
+For *Node.js*:
+
+    npm install tbd
+    
+For the browser - grab the latest version from [git](https://github.com/aaronpowell/tbd/blob/master/lib/tbd.js).
+
+# Using tbd
+
+## Node.js
+
+Basic usage:
+
+    var tbd = require('tbd');
+    
+    var data = tbd.from({ hello: 'world' }).make(10);
+    
+    console.log(data.length); //10
+    
+Tweaking properties:
+
+    var tbd = require('tbd');
+    
+    var data = tbd.from({ hello: 'world' })
+                .prop('hello').use(function() { return 'my value; }).done()
+                .make(10);
+                
+    console.log(data.length); //10
+    
+## Browser
+
+When using tbd in the browser it works exactly the same way, only you don't need the `require` statement (unless you want to use RequireJS).
+
+# Running the tests
+
+There's a bunch of tests shipped which uses [Jasmine](http://pivotal.github.com/jasmine/) so you can run them from node.js if you want:
+
+    node tests.js
+
+# License
+
+[MIT](https://github.com/aaronpowell/tbd/blob/master/License.txt)
