@@ -18,4 +18,19 @@ describe('tbd-properties', function() {
         expect(data[0].bar).toEqual(1);
         expect(data[0].baz).toBeTruthy();
     });
+    
+    it('should create properties when they don\'t exist', function() {
+        var data = tbd.from({}).prop('foo').ready().make(1);
+        
+        expect(data[0].hasOwnProperty('foo')).toBeTruthy();
+    });
+    
+    it('should allow property values to be overriden', function() {
+        var data = tbd
+                    .from({ foo: 'bar' })
+                    .prop('foo').use('baz').build()
+                    .make(1);
+                    
+        expect(data[0].foo).toEqual('baz');
+    });
 });
