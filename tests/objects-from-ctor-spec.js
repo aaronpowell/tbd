@@ -1,6 +1,14 @@
 describe('tbd-supports-ctor-pattern', function() {
     var tbd = require('../lib/');
-    
+
+    beforeEach(function() {
+        this.addMatchers({
+            toBeInArray: function(array) {
+                return ~array.indexOf(this.actual);
+            }
+        });
+    });
+
     it('should create from a function', function() {
         var c = function() { };
         
@@ -29,5 +37,19 @@ describe('tbd-supports-ctor-pattern', function() {
         
         expect(data[0].a).toEqual('a');
         expect(data[0].b).toEqual('b');
+    });
+    
+    it('should allow random values in ctor', function() {
+        var c = function(a) {
+            console.log(a);
+            this.a = a;
+        };
+        
+        var data = tbd.from(c)
+                    .constructWith(tbd.utils.random(1,2,3))
+                    .make(1);
+                    
+        expect(data[0].a).toBeInArray([1,2,3]);
+        console.log(data[0].a);
     });
 });
