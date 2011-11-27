@@ -18,7 +18,7 @@ For the browser - grab the latest version from [git](https://github.com/aaronpow
 
 ## Node.js
 
-Basic usage:
+### Basic usage
 
     var tbd = require('tbd');
     
@@ -26,7 +26,7 @@ Basic usage:
     
     console.log(data.length); //10
     
-Tweaking properties:
+### Tweaking properties
 
     var tbd = require('tbd');
     
@@ -35,6 +35,32 @@ Tweaking properties:
                 .make(10);
                 
     console.log(data.length); //10
+    
+### Using classes
+
+tbd allows you to create objects from classes the same way that you can create data from objects. The difference is that for classes you just pass in the class reference.
+
+You can also provide constructor parameters using the `constructWith` and passing in the arguments as you would pass them for the constructor. If you don't want to pass anything to your constructor you don't need to use that method.
+
+    var Person = function(firstName. lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    };
+    
+    var data = tbd.from(Person)
+                .constructWith('Aaron', 'Powell')
+                .make(10);
+                
+### Utilities
+
+There are a few utility methods provided by tbd to make generating more random data. These hang off the `tbd.utils` namespace.
+
+**tbd.utils.random**
+
+This is used for selecting a random value from an array:
+
+    tbd.from({ foo: 1 }).prop('foo').use(tbd.utils.random(1,2,3,4,5,6,7,8,9)).make(10);
+    //foo's value will be randomly selected from the array for each object created
     
 ## Browser
 
