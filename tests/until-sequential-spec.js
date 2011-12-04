@@ -36,4 +36,14 @@ describe('tbd-util-sequantial', function() {
         expect(data[0].foo).toBe('z');
         expect(data[1].foo).toBe('a');
     });
+    
+    it('should handle sequential dates', function () {
+        var start = new Date(),
+            data = tbd.from({})
+                    .prop('foo').use(tbd.utils.sequential(start))
+                    .make(2);
+                    
+        expect(data[0].foo).toEqual(start);
+        expect(data[1].foo).not.toEqual(start);
+    });
 });
