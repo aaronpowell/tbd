@@ -46,4 +46,66 @@ describe('tbd-util-sequantial', function() {
         expect(data[0].foo).toEqual(start);
         expect(data[1].foo).not.toEqual(start);
     });
+    
+    it('should increment by year when specified', function () {
+        var start = new Date(),
+            data = tbd.from({})
+                    .prop('foo').use(tbd.utils.sequential(start, 'y'))
+                    .make(2);
+                    
+        expect(data[0].foo.getFullYear()).toEqual(start.getFullYear());
+        expect(data[1].foo.getFullYear()).toEqual(start.getFullYear() + 1);
+    });
+    
+    it('should increment by month when specified', function () {
+        var start = new Date(),
+            month = start.getMonth() == 11 ? 0 : start.getMonth + 1,
+            data = tbd.from({})
+                    .prop('foo').use(tbd.utils.sequential(start, 'M'))
+                    .make(2);
+                    
+        expect(data[0].foo.getMonth()).toEqual(start.getMonth());
+        expect(data[1].foo.getMonth()).toEqual(month);
+    });
+    
+    it('should increment by day when specified', function () {
+        var start = new Date(),
+            data = tbd.from({})
+                    .prop('foo').use(tbd.utils.sequential(start, 'd'))
+                    .make(2);
+                    
+        expect(data[0].foo.getDate()).toEqual(start.getDate());
+        expect(data[1].foo.getDate()).toEqual(start.getDate() + 1);
+    });
+    
+    it('should increment by hour when specified', function () {
+        var start = new Date(),
+            hours = start.getHours() === 23 ? 0 : start.getHours() + 1,
+            data = tbd.from({})
+                    .prop('foo').use(tbd.utils.sequential(start, 'h'))
+                    .make(2);
+
+        expect(data[0].foo.getHours()).toEqual(start.getHours());
+        expect(data[1].foo.getHours()).toEqual(hours);
+    });
+    
+    it('should increment by minutes when specified', function () {
+        var start = new Date(),
+            data = tbd.from({})
+                    .prop('foo').use(tbd.utils.sequential(start, 'm'))
+                    .make(2);
+                    
+        expect(data[0].foo.getMinutes()).toEqual(start.getMinutes());
+        expect(data[1].foo.getMinutes()).toEqual(start.getMinutes() + 1);
+    });
+    
+    it('should increment by seconds when specified', function () {
+        var start = new Date(),
+            data = tbd.from({})
+                    .prop('foo').use(tbd.utils.sequential(start, 's'))
+                    .make(2);
+                    
+        expect(data[0].foo.getSeconds()).toEqual(start.getSeconds());
+        expect(data[1].foo.getSeconds()).toEqual(start.getSeconds() + 1);
+    });
 });
