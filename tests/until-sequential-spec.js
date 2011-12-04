@@ -27,4 +27,13 @@ describe('tbd-util-sequantial', function() {
         expect(data[0].foo).toBe('hello');
         expect(data[1].foo).toBe('helloa');
     });
+    
+    it('should not blow up when starting a sequence at the end of the char list', function () {
+        var data = tbd.from({})
+                    .prop('foo').use(tbd.utils.sequential('z'))
+                    .make(2);
+                    
+        expect(data[0].foo).toBe('z');
+        expect(data[1].foo).toBe('a');
+    });
 });
