@@ -1,8 +1,8 @@
 {
     "name":"tbd",
     "description":"tbd is a test data building library, allowing you to quickly spin up large amounts of fake data to be pumped into tests",
-    "keywords": ["testing", "unit-testing", "data"],
-    "version":"0.6.0",
+    "keywords": ["testing", "unit-testing", "data", "generator"],
+    "version":"0.6.1",
     "maintainers": [{
         "name": "Aaron Powell",
         "email": "me@aaron-powell.com",
