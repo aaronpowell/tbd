@@ -50,6 +50,5 @@ describe('tbd-supports-ctor-pattern', function() {
                     .make(1);
                     
         expect(data[0].a).toBeInArray([1,2,3]);
-        console.log(data[0].a);
     });
 });
