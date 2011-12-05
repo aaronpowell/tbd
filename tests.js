@@ -21,6 +21,7 @@ if (process.argv.length === 3 && process.argv[2] === 'web') {
     var express = require('express'),
         fs = require('fs'),
         pub = __dirname + '/web/public',
+        tests = __dirname + '/tests/',
         server;
 
     server = express.createServer();
@@ -31,13 +32,19 @@ if (process.argv.length === 3 && process.argv[2] === 'web') {
     server.set('views', __dirname + '/web/views');
 
     server.get('/specs.js', function (req, res) {
-        var files = fs.readdirSync(__dirname + '/tests/').filter(function (x) { return x.match(matcher); });
+        var files = fs.readdirSync(tests).filter(function (x) { return x.match(matcher); });
         var js = '';
         
         for (var i =0, il = files.length; i < il; i++) {
-            js += fs.readFileSync(__dirname + '/tests/' + files[i]);
+            js += fs.readFileSync(tests + files[i]);
         }
         res.send(js, { 'Content-Type': 'application/javascript' });
+    });
+    
+    server.get('/tbd.js', function (req, res) {
+        var tbd = fs.readFileSync(__dirname + '/lib/tbd.js');
+        
+        res.send(tbd, { 'Content-Type': 'application/javascript' });
     });
 
     server.get('/', function (req, res) {

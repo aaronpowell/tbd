@@ -14,6 +14,11 @@ html.no-js(lang='en')
   body.deck-container
     != body
 
+    script(src='/tbd.js')
+    script(src='/site.js')
     script(src='/jasmine-1.1.0/jasmine.js')
     script(src='/jasmine-1.1.0/jasmine-html.js')
     script(src='/specs.js')
+    script
+        jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+        jasmine.getEnv().execute();

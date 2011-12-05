@@ -41,7 +41,6 @@ describe('tbd-supports-ctor-pattern', function() {
     
     it('should allow random values in ctor', function() {
         var c = function(a) {
-            console.log(a);
             this.a = a;
         };
         
