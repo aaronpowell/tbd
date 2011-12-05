@@ -108,4 +108,15 @@ describe('tbd-util-sequantial', function() {
         expect(data[0].foo.getSeconds()).toEqual(start.getSeconds());
         expect(data[1].foo.getSeconds()).toEqual(start.getSeconds() + 1);
     });
+    
+    it('should know that going past the end of a month rolls over to a new month', function () {
+        var start = new Date(2011, 2, 1),
+            data = tbd.from({})
+                    .prop('foo').use(tbd.utils.sequential(start, 'd'))
+                    .make(30);
+
+        //just of note you have to +1 the month as it returns a 0-based month index
+        expect(data[29].foo.getMonth() + 1).not.toEqual(2);
+        expect(data[29].foo.getMonth() + 1).toEqual(3);
+    });
 });
