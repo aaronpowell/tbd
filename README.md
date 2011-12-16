@@ -1,5 +1,7 @@
 # tbd - Test Data Builder
 
+[![Build Status](https://secure.travis-ci.org/aaronpowell/tbd.png)](https://secure.travis-ci.org/aaronpowell/tbd.png)
+
 Have you ever needed to push out a bunch of data for testing your app? Maybe your backend services aren't ready but you want to build the UI for the expected data?
 
 Well tbd to the rescue, tbd will allow you to quickly build up some data quickly and painlessly.
