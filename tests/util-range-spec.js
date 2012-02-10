@@ -6,6 +6,10 @@ describe('tbd-util-range', function() {
             toBeInDateRange: function(min, max) {
                 var actual = this.actual.getTime();
                 return actual <= max.getTime() && actual >= min.getTime();
+            },
+            toBeInNumericalRange: function (min, max) {
+                var actual = this.actual;
+                return actual <= max && actual >= min;
             }
         });
     });
@@ -15,17 +19,15 @@ describe('tbd-util-range', function() {
                     .prop('foo').use(tbd.utils.range(0, 10))
                     .make(1);
         expect(data.length).toBe(1);
-        expect(data[0].foo).toBeGreaterThan(-1);
-        expect(data[0].foo).toBeLessThan(11);
+        expect(data[0].foo).toBeInNumericalRange(0, 10);
     });
     
     it('should allow negative ranges', function () {
         var data = tbd.from({})
-                    .prop('foo').use(tbd.utils.range(-1, -10))
+                    .prop('foo').use(tbd.utils.range(-10, -1))
                     .make(1);
         expect(data.length).toBe(1);
-        expect(data[0].foo).toBeGreaterThan(-11);
-        expect(data[0].foo).toBeLessThan(0);
+        expect(data[0].foo).toBeInNumericalRange(-10, -1);
     });
     
     it('should handle date ranges', function () {
@@ -37,5 +39,15 @@ describe('tbd-util-range', function() {
                     
         expect(data.length).toBe(1);
         expect(data[0].foo).toBeInDateRange(min, max);
+    });
+    
+    it('should handle large number ranges', function () {
+        var data = tbd.from({})
+                    .prop('foo').use(tbd.utils.range(100, 500))
+                    .make(100);
+                    
+        for (var i = 0, il = data.length; i < il; i++) {
+            expect(data[i].foo).toBeInNumericalRange(100, 500);
+        }
     });
 });
