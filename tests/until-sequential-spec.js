@@ -59,7 +59,7 @@ describe('tbd-util-sequantial', function() {
     
     it('should increment by month when specified', function () {
         var start = new Date(),
-            month = start.getMonth() == 11 ? 0 : start.getMonth + 1,
+            month = start.getMonth() == 11 ? 0 : start.getMonth() + 1,
             data = tbd.from({})
                     .prop('foo').use(tbd.utils.sequential(start, 'M'))
                     .make(2);

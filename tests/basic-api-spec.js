@@ -3,7 +3,8 @@ describe('tbd-builder', function() {
     
     beforeEach(function() {
         this.addMatchers({
-            toBeInArray: function(array) {
+            toBeInArray: function() {
+                var array = [].slice.call(arguments);
                 return ~array.indexOf(this.actual);
             },
             toBeInDateRange: function(min, max) {
