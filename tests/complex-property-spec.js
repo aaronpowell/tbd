@@ -1,5 +1,5 @@
 describe('tbd-complex-properties', function() {
-    var tbd = require('../lib/');
+    var tbd = require('../');
     it('should clone complex properties', function() {
         var data = tbd.from({
                         foo: {

@@ -1,5 +1,5 @@
 describe('tbd-properties', function() {
-    var tbd = require('../lib/');
+    var tbd = require('../');
     it('should clone properties from source', function() {
         var data = tbd.from({ foo: 'bar' }).make(1);
         

@@ -1,5 +1,5 @@
 describe('tbd-supports-ctor-pattern', function() {
-    var tbd = require('../lib/');
+    var tbd = require('../');
 
     beforeEach(function() {
         this.addMatchers({

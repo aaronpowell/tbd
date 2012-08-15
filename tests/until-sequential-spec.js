@@ -1,5 +1,5 @@
 describe('tbd-util-sequantial', function() {
-    var tbd = require('../lib/');
+    var tbd = require('../');
     
     it('should generate a sequential value for each record', function () {
         var data = tbd.from({})

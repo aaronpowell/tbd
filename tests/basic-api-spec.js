@@ -1,5 +1,5 @@
 describe('tbd-builder', function() {
-    var tbd = require('../lib/');
+    var tbd = require('../');
     
     beforeEach(function() {
         this.addMatchers({
