@@ -33,7 +33,7 @@ For the browser - grab the latest version from [git](https://github.com/aaronpow
     var tbd = require('tbd');
     
     var data = tbd.from({ hello: 'world' })
-                .prop('hello').use(function() { return 'my value; }).done()
+                .prop('hello').use(function() { return 'my value'; }).done()
                 .make(10);
                 
     console.log(data.length); //10
