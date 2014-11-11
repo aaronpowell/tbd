@@ -13,9 +13,9 @@
         "url": "https://github.com/aaronpowell/tbd/blob/master/License.txt"
     }],
     "dependencies": {
-        "jasmine-node": "=1.0.0",
-        "express": "=2.5.0",
-    	"jade": "=0.18.0"
+        "jasmine-node": "1.0.26",
+        "express": "3.0.0rc3",
+    	"jade": "0.27.2"
     },
     "repositories": [{
             "type": "git", 
